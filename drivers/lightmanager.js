@@ -18,7 +18,7 @@ class HttpDriver extends DriverBase {
     http.get({
       host: this.driver.url,
       port: this.driver.port,
-      path: '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + (state) ? 'ON' : 'OFF'
+      path: '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + (state === 1) ? 'ON' : 'OFF'
     }, function (response) {
       console.log(response);
     });
