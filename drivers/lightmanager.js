@@ -9,16 +9,16 @@ class HttpDriver extends DriverBase {
 
     // Create driver.
     this.driver = config.driver;
-    log(`initialized HttpDriver (config ${ config.driver })`);
+    console.log(`initialized HttpDriver (config ${ config.driver })`);
   }
 
   switch(address, device, state) {
-    log(`do http request switch with:` + address + device + state);
+    console.log(`do http request switch with:` + address + device + state);
     //this.driver.transmit(address, device, state);
   }
 
   dim(address, device, level) {
-    log(`do http request dim with:` + address + device + level);
+    console.log(`do http request dim with:` + address + device + level);
     //this.driver.dim(address, device, level);
   }
 }
