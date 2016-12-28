@@ -28,7 +28,7 @@ class HttpDriver extends DriverBase {
     });
   }
 
-  convertToPercentage(level) {
+  convertToPercentage = function(level) {
     switch (level) {
       case 1:
         return '6.25%';
