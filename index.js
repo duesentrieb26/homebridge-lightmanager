@@ -61,7 +61,7 @@ class KaKuAccessory {
 
     if (config.dimmable) {
       let previousLevel = -1;
-      this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) = > {
+      this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
         // Convert 0-100 (Homekit) to 0-15 (Kaku).
         level = Math.ceil((level / 100) * 15);
 
