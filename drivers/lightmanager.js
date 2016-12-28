@@ -30,7 +30,7 @@ class HttpDriver extends DriverBase {
     http.get({
       host: this.driver.url,
       port: this.driver.port,
-      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + level
+      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + level)
     }, function (response) {
       console.log(response);
     });
