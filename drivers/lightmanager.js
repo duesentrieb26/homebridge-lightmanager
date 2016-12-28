@@ -24,7 +24,7 @@ class HttpDriver extends DriverBase {
       port: this.driver.port,
       path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + onoff)
     }, function (response) {
-      console.log(response);
+      console.log(response.statusCode + ' ' + response.statusMessage);
     });
   }
 
@@ -89,7 +89,7 @@ class HttpDriver extends DriverBase {
       port: this.driver.port,
       path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + percentage)
     }, function (response) {
-      console.log(response);
+      console.log(response.statusCode + ' ' + response.statusMessage);
     });
   }
 }
