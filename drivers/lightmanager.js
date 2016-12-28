@@ -8,7 +8,7 @@ class HttpDriver extends DriverBase {
     super(log, config);
 
     // Create driver.
-    this.driver = http(config.driver);
+    this.driver = config.driver;
     log(`initialized HttpDriver (config ${ config.driver })`);
   }
 
