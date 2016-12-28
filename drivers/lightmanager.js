@@ -30,7 +30,6 @@ class HttpDriver extends DriverBase {
 
 
   dim(device, code, address, level) {
-    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
     var percentage = '50%';
 
     switch (level) {
@@ -83,6 +82,8 @@ class HttpDriver extends DriverBase {
         percentage = '100%';
         break;
     }
+
+    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + percentage);
 
     http.get({
       host: this.driver.url,
