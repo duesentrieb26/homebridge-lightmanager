@@ -13,7 +13,7 @@ class HttpDriver extends DriverBase {
   }
 
   switch(device, code, address, state) {
-    console.log(`do http request: ` + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + (state) ? 'ON' : 'OFF');
+    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + state);
 
     http.get({
       host: this.driver.url,
@@ -25,7 +25,7 @@ class HttpDriver extends DriverBase {
   }
 
   dim(device, code, address, level) {
-    console.log(`do http request dim with:` + device + code + address + level);
+    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + state);
 
     http.get({
       host: this.driver.url,
