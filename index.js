@@ -16,7 +16,7 @@ class KaKuPlatform {
     this.config = config;
 
     // Load driver module.
-    let driver = config.driver || { type : process.env.H_KAKU_DRIVER || 'rpi' };
+    let driver = config.driver;
     try {
       let Driver = require( path.resolve(__dirname, 'drivers', driver.type) );
       this.log(`using driver '${ driver.type }'`);
@@ -60,27 +60,23 @@ class KaKuAccessory {
     });
 
     if (config.dimmable) {
-      if (typeof config.address === 'number') {
-        let previousLevel = -1;
-        this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
-          // Convert 0-100 (Homekit) to 0-15 (Kaku).
-          level = Math.ceil((level / 100) * 15);
+      let previousLevel = -1;
+      this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) = > {
+        // Convert 0-100 (Homekit) to 0-15 (Kaku).
+        level = Math.ceil((level / 100) * 15);
 
-          // If the previously set level is the same as the new level, don't perform the operation
-          // (setting the same value twice seems to turn off the device).
-          if (level === previousLevel) return callback();
-          previousLevel = level;
+        // If the previously set level is the same as the new level, don't perform the operation
+        // (setting the same value twice seems to turn off the device).
+        if (level === previousLevel) return callback();
+        previousLevel = level;
 
-          // Dim the device.
-          log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (address = ${ config.address }, device = ${ config.device }) to level ${ level }`);
-          driver.dim(config.address, config.device, level);
+        // Dim the device.
+        log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (address = ${ config.address }, device = ${ config.device }) to level ${ level }`);
+        driver.dim(config.address, config.device, level);
 
-          // Done.
-          return callback();
-        });
-      } else {
-        log(`[WARNING] old-style devices cannot be dimmed, please adjust your configuration for device '${ this.name }'`);
-      }
+        // Done.
+        return callback();
+      });
     }
   }
 
