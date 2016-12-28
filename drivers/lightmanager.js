@@ -28,48 +28,62 @@ class HttpDriver extends DriverBase {
     });
   }
 
-  convertToPercentage = function(level) {
-    switch (level) {
-      case 1:
-        return '6.25%';
-      case 2:
-        return '12.50%';
-      case 3:
-        return '18.75%';
-      case 4:
-        return '25%';
-      case 5:
-        return '31.25%';
-      case 6:
-        return '37.50%';
-      case 7:
-        return '43.75%';
-      case 8:
-        return '50%';
-      case 9:
-        return '56.25%';
-      case 10:
-        return '62.50%';
-      case 11:
-        return '68.75%';
-      case 12:
-        return '75%';
-      case 13:
-        return '81.25%%';
-      case 14:
-        return '87.50%';
-      case 15:
-        return '93.75%';
-      case 16:
-        return '100%';
-    }
-  }
-
 
   dim(device, code, address, level) {
     console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
+    var percentage = '50%';
 
-    var percentage = convertToPercentage(level);
+    switch (level) {
+      case 1:
+        percentage = '6.25%';
+        break;
+      case 2:
+        percentage = '12.50%';
+        break;
+      case 3:
+        percentage = '18.75%';
+        break;
+      case 4:
+        percentage = '25%';
+        break;
+      case 5:
+        percentage = '31.25%';
+        break;
+      case 6:
+        percentage = '37.50%';
+        break;
+      case 7:
+        percentage = '43.75%';
+        break;
+      case 8:
+        percentage = '50%';
+        break;
+      case 9:
+        percentage = '56.25%';
+        break;
+      case 10:
+        percentage = '62.50%';
+        break;
+      case 11:
+        percentage = '68.75%';
+        break;
+      case 12:
+        percentage = '75%';
+        break;
+      case 13:
+        percentage = '81.25%%';
+        break;
+      case 14:
+        percentage = '87.50%';
+        break;
+      case 15:
+        percentage = '93.75%';
+        break;
+      case 16:
+        percentage = '100%';
+        break;
+    }
+
     http.get({
       host: this.driver.url,
       port: this.driver.port,
