@@ -2,10 +2,10 @@
 const DriverBase = require('./base');
 
 class ConsoleDriver extends DriverBase {
-  switch(address, device, value) {
+  switch(device, code, address, value) {
   }
 
-  dim(address, device, value) {
+  dim(device, code, address, value) {
   }
 }
 

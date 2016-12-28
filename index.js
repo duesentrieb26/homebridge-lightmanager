@@ -54,8 +54,8 @@ class KaKuAccessory {
       // (which we don't want).
       if (config.dimmable && value === currentValue) return callback();
       currentValue = value;
-      log(`switching ${ config.type.toLowerCase() } '${ config.name }' (address = ${ config.address }, device = ${ config.device }) ${ value ? 'on' : 'off' }`);
-      driver.switch(config.address, config.device, value);
+      log(`switching ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) ${ value ? 'on' : 'off' }`);
+      driver.switch(config.device || '', config.code, config.address, value);
       return callback();
     });
 
@@ -71,8 +71,8 @@ class KaKuAccessory {
         previousLevel = level;
 
         // Dim the device.
-        log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (address = ${ config.address }, device = ${ config.device }) to level ${ level }`);
-        driver.dim(config.address, config.device, level);
+        log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to level ${ level }`);
+        driver.dim(config.device || '', config.address, config.device, level);
 
         // Done.
         return callback();

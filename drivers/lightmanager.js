@@ -12,13 +12,13 @@ class HttpDriver extends DriverBase {
     console.log(`initialized HttpDriver (config ${ config.driver })`);
   }
 
-  switch(address, device, state) {
-    console.log(`do http request switch with:` + address + device + state);
+  switch(device, code, address, state) {
+    console.log(`do http request switch with:` + device + code + address + state);
     //this.driver.transmit(address, device, state);
   }
 
-  dim(address, device, level) {
-    console.log(`do http request dim with:` + address + device + level);
+  dim(device, code, address, level) {
+    console.log(`do http request dim with:` + device + code + address + level);
     //this.driver.dim(address, device, level);
   }
 }

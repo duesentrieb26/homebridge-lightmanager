@@ -5,19 +5,19 @@ class DriverBase {
     this.config = config;
   }
 
-  switch(address, device, value) {
+  switch(code, address, value) {
     this.log(`'.switch()' command not implemented by driver`);
   }
 
-  on(address, device) {
-    return this.switch(address, device, true);
+  on(code, address) {
+    return this.switch(code, address, true);
   }
 
-  off(address, device) {
-    return this.switch(address, device, false);
+  off(code, address) {
+    return this.switch(code, address, false);
   }
 
-  dim(address, device, value) {
+  dim(code, address, value) {
     this.log(`'.dim()' command not implemented by driver`);
   }
 }

@@ -12,12 +12,12 @@ class RaspberryPiDriver extends DriverBase {
     log(`initialized RPi driver (pin ${ config.driver.pin })`);
   }
 
-  switch(address, device, state) {
-    this.driver.transmit(address, device, state);
+  switch(device, code, address, state) {
+    this.driver.transmit(code, address, state);
   }
 
-  dim(address, device, level) {
-    this.driver.dim(address, device, level);
+  dim(device, code, address, level) {
+    this.driver.dim(code, address, level);
   }
 }
 
