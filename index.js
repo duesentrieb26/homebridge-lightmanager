@@ -28,7 +28,7 @@ class KaKuPlatform {
   }
 
   accessories(callback) {
-    return callback( (this.config.accessories || []).map(acc => {
+    return callback((this.config.accessories || []).map(acc => {
       acc.type = acc.type || 'Outlet';
       // Validate type.
       if (! Service[ acc.type ]) {
@@ -36,7 +36,7 @@ class KaKuPlatform {
       }
       this.log(`adding ${ acc.type.toLowerCase() } '${ acc.name }' (address = ${ acc.address }, device = ${ acc.device })`);
       return new KaKuAccessory(acc, this.driver, this.log);
-    }) );
+    }));
   }
 
 }
