@@ -8,7 +8,7 @@ class HttpDriver extends DriverBase {
     super(log, config);
 
     // Create driver.
-    this.driver = HttpDriver(config.driver);
+    this.driver = KaKu(config.driver);
     log(`initialized HttpDriver (config ${ config.driver })`);
   }
 
