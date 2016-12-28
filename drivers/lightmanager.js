@@ -16,10 +16,10 @@ class HttpDriver extends DriverBase {
     console.log(`do http request switch with:` + device + code + address + state);
 
     http.get({
-      host: this.driver.url + ':' + this.driver.port,
+      host: this.driver.url,
+      port: this.driver.port,
       path: '/cmd=' + device + ' ' + code + ' ' + address + (state) ? 'ON' : 'OFF'
     });
-    //this.driver.transmit(address, device, state);
   }
 
   dim(device, code, address, level) {
