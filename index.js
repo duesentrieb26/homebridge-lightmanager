@@ -72,7 +72,7 @@ class KaKuAccessory {
 
         // Dim the device.
         log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to level ${ level }`);
-        driver.dim(config.device || '', config.address, config.device, level);
+        driver.dim(config.device || '', config.address, config.code, level);
 
         // Done.
         return callback();
