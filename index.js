@@ -63,7 +63,7 @@ class KaKuAccessory {
       let previousLevel = -1;
       this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
         // Convert 0-100 (Homekit) to 0-248 (Kaku).
-        level = Math.ceil(((level / 100) * 16) * 6.25).toString() + '%';
+        level = (Math.ceil(((level / 100) * 16)) * 6.25).toString() + '%';
 
         // If the previously set level is the same as the new level, don't perform the operation
         // (setting the same value twice seems to turn off the device).
