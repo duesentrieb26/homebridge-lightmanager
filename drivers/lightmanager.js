@@ -33,52 +33,52 @@ class HttpDriver extends DriverBase {
     var percentage = '50%';
 
     switch (level) {
-      case 1:
-        percentage = '6.25%';
+      case 0:
+        percentage = '0';
         break;
-      case 2:
+      case 1:
         percentage = '12.50%';
         break;
-      case 3:
+      case 2:
         percentage = '18.75%';
         break;
-      case 4:
+      case 3:
         percentage = '25%';
         break;
-      case 5:
+      case 4:
         percentage = '31.25%';
         break;
-      case 6:
+      case 5:
         percentage = '37.50%';
         break;
-      case 7:
+      case 6:
         percentage = '43.75%';
         break;
-      case 8:
+      case 7:
         percentage = '50%';
         break;
-      case 9:
+      case 8:
         percentage = '56.25%';
         break;
-      case 10:
+      case 9:
         percentage = '62.50%';
         break;
-      case 11:
+      case 10:
         percentage = '68.75%';
         break;
-      case 12:
+      case 11:
         percentage = '75%';
         break;
-      case 13:
+      case 12:
         percentage = '81.25%%';
         break;
-      case 14:
+      case 13:
         percentage = '87.50%';
         break;
-      case 15:
+      case 14:
         percentage = '93.75%';
         break;
-      case 16:
+      case 15:
         percentage = '100%';
         break;
     }
