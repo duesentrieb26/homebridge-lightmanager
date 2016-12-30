@@ -1,6 +1,6 @@
 'use strict';
 const DriverBase = require('./base');
-const http       = require('http');
+const http = require('http');
 
 class HttpDriver extends DriverBase {
 
@@ -17,8 +17,6 @@ class HttpDriver extends DriverBase {
 
     console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + onoff);
 
-
-
     http.get({
       host: this.driver.url,
       port: this.driver.port,
@@ -27,7 +25,6 @@ class HttpDriver extends DriverBase {
       console.log(response.statusCode + ' ' + response.statusMessage);
     });
   }
-
 
   dim(device, code, address, level) {
 

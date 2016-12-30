@@ -1,9 +1,9 @@
 {
-  "name": "homebridge-klikaanklikuit",
+  "name": "homebridge-lightmanager",
   "version": "1.2.0",
-  "description": "Homebridge plugin for KlikAanKlikUit™",
+  "description": "Homebridge plugin for Lightmanager™",
   "main": "index.js",
-  "repository": "robertklep/homebridge-klikaanklikuit",
+  "repository": "kevinriemens/homebridge-lightmanager",
   "keywords": [
     "homebridge-plugin"
   ],
@@ -11,9 +11,8 @@
     "node": ">=4.0.0",
     "homebridge": ">=0.2.0"
   },
-  "author": "Robert Klep <robert@klep.name>",
+  "author": "Kevin Riemens <kevin@xclusivemultimedia.com>",
   "license": "MIT",
   "dependencies": {
-    "kaku-rpi": "^2.0.0"
   }
 }
