@@ -1,13 +1,17 @@
-# Homebridge KlikAanKlikUit plugin
+# Homebridge Lightmanager plugin
 
-This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your KlikAanKlikUit devices. This plugin is meant to run on Raspberry Pi's (or boards with a similar GPIO setup), using a cheap 433Mhz transmitter (see [this page](http://shop.ninjablocks.com/blogs/how-to/7506204-adding-433-to-your-raspberry-pi) for more information on how to connect the transmitter to your Raspberry Pi).
+This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your devices with your JB Media Lightmanager. 
 
-**DISCLAIMER**: this plugin is not in any way endorsed by, or related to, COCO International B.V. or Trust International B.V.
+It is a fork of [robertklep/homebridge-klikaanklikuit](https://github.com/robertklep/homebridge-klikaanklikuit). So all credit goes out to him for making the original plugin. I merely adapted it for use with the Light Manager Mini,
+
+This plugin is meant to run on Raspberry Pi's (or boards with a similar setup), using a Light Manager (only Mini was is tested, other might work, don't know) from [JbMedia](http://cms.jbmedia.de/index.php?option=com_content&task=view&id=114&Itemid=74)
+
+**DISCLAIMER**: this plugin is not in any way endorsed by, or related to, COCO International B.V. or Trust International B.V. or Jb Media
 
 ## Installation
 
 ```
-$ npm i robertklep/homebridge-klikaanklikuit -g
+$ npm i kevinriemens/homebridge-lightmanager -g
 ```
 
 Homebridge plugins need to be installed globally, so the `-g` is mandatory. You may need to use `sudo` as well.
