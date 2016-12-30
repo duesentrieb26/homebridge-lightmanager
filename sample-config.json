@@ -5,76 +5,20 @@
     "port": 51826,
     "pin": "031-45-154"
   },
-  "description": "Spoorzoeker 156",
+  "description": "",
   "accessories": [
   ],
   "platforms": [
     {
-      "platform": "Nest",
-      "token": "c.50gjQoWSml19pCWoyv6baDPVDMYgCOsvkzSM1bBQOKsR8t6nmoUCRDGrnBmGV7UcP9boxnJvuAiOmyw1o99ymvp1CHjug6Ko6ELtt4qQD53BY3wc8CEya6gEp7brN0e1NnpK3RZMAQ6RibMr",
-      "clientId": "3aa5c7b0-ad4e-44a4-aa32-3fd919abc99f",
-      "clientSecret": "f2jRFPSU4K0ArWOze5PywDhWt",
-      "code": "BVWGDNY2",
-      "username": "kevin@riemens.me",
-      "password": "!Dean2014"
-    },
-    {
       "platform": "KlikAanKlikUit",
       "driver": {
-        "type": "lightmanager-http",
-        "url": "10.0.1.5",
-        "port": "55000"
+        "type": "lightmanager",
+        "url": "{{ ip of lightmanager webserver daemon }}",
+        "port": "{{ port of lightmanager webserver daemon }}"
       },
       "accessories": [
         {
-          "name": "Mite",
-          "type": "Lightbulb",
-          "device": "IT",
-          "dimmable": true,
-          "code": "D",
-          "address": "7"
-        },
-        {
-          "name": "Dressoir",
-          "type": "Lightbulb",
-          "device": "IT",
-          "code": "D",
-          "address": "10"
-        },
-        {
-          "name": "Gregg",
-          "type": "Lightbulb",
-          "device": "IT",
-          "dimmable": true,
-          "code": "D",
-          "address": "12"
-        },
-        {
-          "name": "Plafond",
-          "type": "Lightbulb",
-          "device": "IT",
-          "dimmable": true,
-          "code": "D",
-          "address": "4"
-        },
-        {
-          "name": "Thor",
-          "type": "Lightbulb",
-          "device": "IT",
-          "dimmable": true,
-          "code": "D",
-          "address": "13"
-        },
-        {
-          "name": "Overkapping",
-          "type": "Lightbulb",
-          "device": "IT",
-          "dimmable": true,
-          "code": "D",
-          "address": "5"
-        },
-        {
-          "name": "Trap",
+          "name": "Dimmable, self learning InterTechno device (i.e. KaKu)",
           "type": "Lightbulb",
           "device": "IT",
           "dimmable": true,
@@ -82,69 +26,19 @@
           "address": "1"
         },
         {
-          "name": "Fillsta",
+          "name": "Non-dimmable, self learning InterTechno device (i.e. KaKu)",
           "type": "Lightbulb",
           "device": "IT",
           "code": "D",
-          "address": "8"
-        },
-        {
-          "name": "Carport",
-          "type": "Lightbulb",
-          "device": "IT",
-          "learn": false,
-          "code": "K",
-          "address": "13"
-        },
-        {
-          "name": "TV kast",
-          "type": "Lightbulb",
-          "device": "IT",
-          "code": "D",
-          "address": "9"
-        },
-        {
-          "name": "Inloopkast",
-          "type": "Lightbulb",
-          "device": "IT",
-          "code": "D",
-          "address": "11"
-        },
-        {
-          "name": "Fontein voortuin",
-          "type": "Switch",
-          "device": "IT",
-          "learn": false,
-          "code": "K",
-          "address": "12"
-        },
-        {
-          "name": "Boomspots",
-          "type": "Lightbulb",
-          "device": "IT",
-          "code": "G",
-          "address": "1"
-        },
-        {
-          "name": "Tuinpalen",
-          "type": "Lightbulb",
-          "device": "IT",
-          "code": "G",
           "address": "2"
         },
         {
-          "name": "Fonteinpomp",
+          "name": "Non-dimmable, old style (non-learning) InterTechno device (i.e. KaKu)",
           "type": "Switch",
           "device": "IT",
-          "code": "G",
-          "address": "3"
-        },
-        {
-          "name": "Fonteinlicht",
-          "type": "Lightbulb",
-          "device": "IT",
-          "code": "G",
-          "address": "4"
+          "learn": false,
+          "code": "K",
+          "address": "1"
         }
       ]
     }
