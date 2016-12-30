@@ -2,9 +2,10 @@
 
 This is a plugin for [Homebridge](https://github.com/nfarina/homebridge) to allow controlling your devices with your JB Media Lightmanager. 
 
-It is a fork of [robertklep/homebridge-klikaanklikuit](https://github.com/robertklep/homebridge-klikaanklikuit). So all credit goes out to him for making the original plugin. I merely adapted it for use with the Light Manager Mini,
+It is a fork of [robertklep/homebridge-klikaanklikuit](https://github.com/robertklep/homebridge-klikaanklikuit). So all credit goes out to him for making the original plugin. I merely adapted it for use with the Light Manager Mini, using http commands accepted by the Light Manager.
 
-This plugin is meant to run on Raspberry Pi's (or boards with a similar setup), using a Light Manager (only Mini was is tested, other might work, don't know) from [JbMedia](http://cms.jbmedia.de/index.php?option=com_content&task=view&id=114&Itemid=74)
+This plugin is meant to run on Raspberry Pi's (or boards with a similar setup), using a Light Manager (only Mini was is tested, other might work, don't know) from [JbMedia](http://cms.jbmedia.de/index.php?option=com_content&task=view&id=114&Itemid=74) and running a Daemon webserver with [Lightmanager C Ext by curzon01](https://github.com/curzon01/light-manager-c-ext/wiki).
+
 
 **DISCLAIMER**: this plugin is not in any way endorsed by, or related to, COCO International B.V. or Trust International B.V. or Jb Media
 
