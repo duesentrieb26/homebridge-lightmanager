@@ -36,7 +36,7 @@
           "name": "Non-dimmable, old style (non-learning) InterTechno device (i.e. KaKu)",
           "type": "Switch",
           "device": "IT",
-          "learn": false,
+          "oldStyle": true,
           "code": "K",
           "address": "1"
         }

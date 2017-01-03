@@ -47,15 +47,22 @@ class KaKuAccessory {
     this.name        = config.name; // needs to be set
     this.service     = new Service[config.type](config.name);
     let currentValue = null;
+    let learn = true;
 
     this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
+
       // If a device is dimmable, we have to prevent the `on` command to be
       // sent successively. Otherwise, the device may end up in dimming mode
       // (which we don't want).
-      //if (config.dimmable) return callback();
+      if (config.dimmable && value) {
+        driver.dim(config.device || '', config.code, config.address, '100%');
+        return callback();
+      }
       currentValue = value;
+
+      if(config.oldStyle) learn = false;
       log(`switching ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) ${ value ? 'on' : 'off' }`);
-      driver.switch(config.device || '', config.code, config.address, value);
+      driver.switch(config.device || '', config.code, config.address, value, learn);
       return callback();
     });
 

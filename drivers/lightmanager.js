@@ -12,15 +12,16 @@ class HttpDriver extends DriverBase {
     console.log(`initialized HttpDriver (config ${ config.driver })`);
   }
 
-  switch(device, code, address, state) {
+  switch(device, code, address, state, learn) {
     var onoff = (state === 1) ? 'ON' : 'OFF';
+    var learnable = (learn) ? ' LEARN ' : ' ';
 
-    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + onoff);
+    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
 
     http.get({
       host: this.driver.url,
       port: this.driver.port,
-      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + onoff)
+      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + learnable + onoff)
     }, function (response) {
       console.log(response.statusCode + ' ' + response.statusMessage);
     });
