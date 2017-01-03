@@ -14,7 +14,7 @@ class HttpDriver extends DriverBase {
 
   switch(device, code, address, state, learn) {
     var onoff = (state === 1) ? 'ON' : 'OFF';
-    var learnable = (learn) ? ' LEARN ' : ' ';
+    var learnable = (learn) ? ' LEARN ' : ' DIP ';
 
     console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
 
