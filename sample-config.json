@@ -10,7 +10,7 @@
   ],
   "platforms": [
     {
-      "platform": "KlikAanKlikUit",
+      "platform": "lightManager",
       "driver": {
         "type": "lightmanager",
         "url": "{{ ip of lightmanager webserver daemon }}",

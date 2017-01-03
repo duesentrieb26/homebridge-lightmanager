@@ -6,13 +6,13 @@ let Service, Characteristic;
 module.exports = homebridge => {
   Service        = homebridge.hap.Service;
   Characteristic = homebridge.hap.Characteristic;
-  homebridge.registerPlatform('homebridge-klikaanklikuit', 'KlikAanKlikUit', KaKuPlatform);
+  homebridge.registerPlatform('homebridge-lightmanager', 'LightManager', KaKuPlatform);
 }
 
 class KaKuPlatform {
 
   constructor(log, config) {
-    this.log    = log = log.bind(log, '[homebridge-klikaanklikuit]');
+    this.log    = log = log.bind(log, '[homebridge-lightmanager]');
     this.config = config;
 
     // Load driver module.
