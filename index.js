@@ -83,6 +83,9 @@ class KaKuAccessory {
         driver.dim(config.device || '', config.code, config.address, '100%');
         return callback();
       }
+      if (config.dimmable && dimming) {
+       return callback();
+      }
       currentValue = value;
 
       if(config.oldStyle) learn = false;
