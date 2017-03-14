@@ -48,13 +48,38 @@ class KaKuAccessory {
     this.service     = new Service[config.type](config.name);
     let currentValue = null;
     let learn = true;
+    let dimming = false;
+
+
+    if (config.dimmable) {
+      let previousLevel = -1;
+      this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
+        // Convert 0-100 (Homekit) to 6.25% steps in KAKU.
+        level = (Math.ceil(((level / 100) * 16)) * 6.25).toString() + '%';
+
+      // If the previously set level is the same as the new level, don't perform the operation
+      // (setting the same value twice seems to turn off the device).
+      if (level === previousLevel) return callback();
+      previousLevel = level;
+
+      // Dim the device.
+      log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to level ${ level }`);
+      driver.dim(config.device || '', config.code, config.address, level);
+
+      // Done.
+
+      dimming = true;
+      return callback();
+    });
+    }
+
 
     this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
 
       // If a device is dimmable, we have to prevent the `on` command to be
       // sent successively. Otherwise, the device may end up in dimming mode
       // (which we don't want).
-      if (config.dimmable && value) {
+      if (config.dimmable && value && !dimming) {
         driver.dim(config.device || '', config.code, config.address, '100%');
         return callback();
       }
@@ -66,25 +91,7 @@ class KaKuAccessory {
       return callback();
     });
 
-    if (config.dimmable) {
-      let previousLevel = -1;
-      this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
-        // Convert 0-100 (Homekit) to 6.25% steps in KAKU.
-        level = (Math.ceil(((level / 100) * 16)) * 6.25).toString() + '%';
 
-        // If the previously set level is the same as the new level, don't perform the operation
-        // (setting the same value twice seems to turn off the device).
-        if (level === previousLevel) return callback();
-        previousLevel = level;
-
-        // Dim the device.
-        log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to level ${ level }`);
-        driver.dim(config.device || '', config.code, config.address, level);
-
-        // Done.
-        return callback();
-      });
-    }
   }
 
   getServices() {
