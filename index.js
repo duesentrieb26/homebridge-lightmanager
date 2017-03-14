@@ -79,12 +79,17 @@ class KaKuAccessory {
       // If a device is dimmable, we have to prevent the `on` command to be
       // sent successively. Otherwise, the device may end up in dimming mode
       // (which we don't want).
-      if (config.dimmable && value && !dimming) {
-        driver.dim(config.device || '', config.code, config.address, '100%');
-        return callback();
-      }
-      if (config.dimmable && dimming) {
-       return callback();
+
+      if (config.dimmable) {
+
+        if(value && !dimming) {
+          driver.dim(config.device || '', config.code, config.address, '100%');
+          return callback();
+        }
+
+        if (value && dimming) {
+          return callback();
+        }
       }
       currentValue = value;
 
