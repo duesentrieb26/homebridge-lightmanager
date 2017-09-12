@@ -54,6 +54,8 @@ class KaKuAccessory {
     if (config.dimmable) {
       let previousLevel = -1;
       this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
+
+        console.log('DIM--->', value, dimming);
         // Convert 0-100 (Homekit) to 6.25% steps in KAKU.
         level = (Math.ceil(((level / 100) * 16)) * 6.25).toString() + '%';
 
@@ -75,6 +77,8 @@ class KaKuAccessory {
 
 
     this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
+
+      console.log('ON--->', value, dimming);
 
       // If a device is dimmable, we have to prevent the `on` command to be
       // sent successively. Otherwise, the device may end up in dimming mode
