@@ -80,7 +80,7 @@ class KaKuAccessory {
 
 
 
-      console.log('ON--->', value, dimming, this);
+      console.log('ON--->', value, dimming, JSON.stringify(this));
 
       // If a device is dimmable, we have to prevent the `on` command to be
       // sent successively. Otherwise, the device may end up in dimming mode
