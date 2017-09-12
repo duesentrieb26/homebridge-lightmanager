@@ -78,7 +78,9 @@ class KaKuAccessory {
 
     this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
 
-      console.log('ON--->', value, dimming);
+
+
+      console.log('ON--->', value, dimming, this);
 
       // If a device is dimmable, we have to prevent the `on` command to be
       // sent successively. Otherwise, the device may end up in dimming mode
