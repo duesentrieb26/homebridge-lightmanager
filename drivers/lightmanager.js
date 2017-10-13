@@ -23,9 +23,10 @@ class HttpDriver extends DriverBase {
     }
     let learnable = (learn) ? ' LEARN ' : ' DIP ';
 
-    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
+
 
     setTimeout(() => {
+      console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
       http.get({
         host: this.driver.url,
         port: this.driver.port,
@@ -33,14 +34,15 @@ class HttpDriver extends DriverBase {
       }, function (response) {
         console.log(response.statusCode + ' ' + response.statusMessage);
       })
-    }, Math.floor(Math.random() * (4000 - 50) + 50));
+    }, Math.floor(Math.random() * (4000 - 1000) + 1000));
   }
 
   dim(device, code, address, level) {
 
-    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
+
 
     setTimeout(() => {
+      console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
       http.get({
         host: this.driver.url,
         port: this.driver.port,
@@ -48,7 +50,7 @@ class HttpDriver extends DriverBase {
       }, function (response) {
         console.log(response.statusCode + ' ' + response.statusMessage);
       })
-    }, Math.floor(Math.random() * (4000 - 50) + 50));
+    }, Math.floor(Math.random() * (4000 - 1000) + 1000));
   }
 }
 
