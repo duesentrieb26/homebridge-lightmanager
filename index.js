@@ -69,6 +69,10 @@ class KaKuAccessory {
         learn = false;
       }
 
+      if(config.dimmable) {
+        return callback;
+      }
+
       log(`switching ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) ${ value ? 'on' : 'off' }`);
       driver.switch(config.device || '', config.code, config.address, value, learn, config.dimmable);
       return callback();
