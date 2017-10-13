@@ -60,12 +60,6 @@ class KaKuAccessory {
 
         return callback();
       });
-
-      this.service.getCharacteristic(Characteristic.Off).on('set', (value, callback) => {
-        log(`dimming '${ config.name }' to 0%`);
-        driver.dim(config.device || '', config.code, config.address, '0%');
-        return callback();
-      });
     }
 
     this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
