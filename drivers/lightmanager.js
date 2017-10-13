@@ -33,7 +33,7 @@ class HttpDriver extends DriverBase {
       }, function (response) {
         console.log(response.statusCode + ' ' + response.statusMessage);
       })
-    }, Math.floor(Math.random() * (400 - 50) + 50));
+    }, Math.floor(Math.random() * (4000 - 50) + 50));
   }
 
   dim(device, code, address, level) {
@@ -48,7 +48,7 @@ class HttpDriver extends DriverBase {
       }, function (response) {
         console.log(response.statusCode + ' ' + response.statusMessage);
       })
-    }, Math.floor(Math.random() * (400 - 50) + 50));
+    }, Math.floor(Math.random() * (4000 - 50) + 50));
   }
 }
 
