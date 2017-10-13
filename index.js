@@ -69,15 +69,8 @@ class KaKuAccessory {
         learn = false;
       }
 
-      // The 'ON' command is send by HomeKit. To not let the device end up in dimming mode, let's  just set the device to 50% hardcoded.
-      if (config.dimmable) {
-          driver.dim(config.device || '', config.code, config.address, '50%');
-          log(`switching dimmable ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to 50%`);
-          return callback();
-      }
-
       log(`switching ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) ${ value ? 'on' : 'off' }`);
-      driver.switch(config.device || '', config.code, config.address, value, learn);
+      driver.switch(config.device || '', config.code, config.address, value, learn, config.dimmable);
       return callback();
     });
 
