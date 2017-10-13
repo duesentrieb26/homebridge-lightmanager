@@ -14,33 +14,33 @@ class HttpDriver extends DriverBase {
 
   switch(device, code, address, state, learn) {
 
-    //console.log('Switch ... ', device, code, address, state, learn);
+    console.log('Switch ... ', device, code, address, state, learn);
 
     let onoff = (state) ? 'ON' : 'OFF';
     let learnable = (learn) ? ' LEARN ' : ' DIP ';
 
     console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
 
-    http.get({
+    setTimeout(http.get({
       host: this.driver.url,
       port: this.driver.port,
       path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + learnable + onoff)
     }, function (response) {
       console.log(response.statusCode + ' ' + response.statusMessage);
-    });
+    }), Math.floor(Math.random() * (400 - 50) + 50));
   }
 
   dim(device, code, address, level) {
 
     console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
 
-    http.get({
+    setTimeout(http.get({
       host: this.driver.url,
       port: this.driver.port,
       path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + level)
     }, function (response) {
       console.log(response.statusCode + ' ' + response.statusMessage);
-    });
+    }), Math.floor(Math.random() * (400 - 50) + 50));
   }
 }
 

@@ -46,56 +46,42 @@ class KaKuAccessory {
   constructor(config, driver, log) {
     this.name = config.name; // needs to be set
     this.service = new Service[config.type](config.name);
-    let currentValue = null;
     let learn = true;
-    let dimming = false;
 
     if (config.dimmable) {
-      let previousLevel = -1;
       this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
 
-        //console.log('DIM--->', level, dimming);
         // Convert 0-100 (Homekit) to 6.25% steps in KAKU.
         level = (Math.ceil(((level / 100) * 16)) * 6.25).toString() + '%';
-
-        // If the previously set level is the same as the new level, don't perform the operation
-        // (setting the same value twice seems to turn off the device).
-        if (level === previousLevel) return callback();
-        previousLevel = level;
 
         // Dim the device.
         log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to level ${ level }`);
         driver.dim(config.device || '', config.code, config.address, level);
 
-        // Done.
+        return callback();
+      });
 
-        dimming = true;
+      this.service.getCharacteristic(Characteristic.Off).on('set', (value, callback) => {
+        log(`dimming '${ config.name }' to 0%`);
+        driver.dim(config.device || '', config.code, config.address, '0%');
         return callback();
       });
     }
 
     this.service.getCharacteristic(Characteristic.On).on('set', (value, callback) => {
 
-      //console.log('ON--->', value, dimming, JSON.stringify(this));
-
-      // If a device is dimmable, we have to prevent the `on` command to be
-      // sent successively. Otherwise, the device may end up in dimming mode
-      // (which we don't want).
-
-      if (config.dimmable) {
-
-        if (value && !dimming) {
-          driver.dim(config.device || '', config.code, config.address, '100%');
-          return callback();
-        }
-
-        if (value && dimming) {
-          return callback();
-        }
+      // Old style
+      if (config.oldStyle) {
+        learn = false;
       }
-      currentValue = value;
 
-      if (config.oldStyle) learn = false;
+      // The 'ON' command is send by HomeKit. To not let the device end up in dimming mode, let's  just set the device to 50% hardcoded.
+      if (config.dimmable) {
+          driver.dim(config.device || '', config.code, config.address, '50%');
+          log(`switching dimmable ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to 50%`);
+          return callback();
+      }
+
       log(`switching ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) ${ value ? 'on' : 'off' }`);
       driver.switch(config.device || '', config.code, config.address, value, learn);
       return callback();
