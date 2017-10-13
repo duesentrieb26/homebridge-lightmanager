@@ -25,26 +25,30 @@ class HttpDriver extends DriverBase {
 
     console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
 
-    setTimeout(http.get({
-      host: this.driver.url,
-      port: this.driver.port,
-      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + learnable + onoff)
-    }, function (response) {
-      console.log(response.statusCode + ' ' + response.statusMessage);
-    }), Math.floor(Math.random() * (400 - 50) + 50));
+    setTimeout(() => {
+      http.get({
+        host: this.driver.url,
+        port: this.driver.port,
+        path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + learnable + onoff)
+      }, function (response) {
+        console.log(response.statusCode + ' ' + response.statusMessage);
+      })
+    }, Math.floor(Math.random() * (400 - 50) + 50));
   }
 
   dim(device, code, address, level) {
 
     console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
 
-    setTimeout(http.get({
-      host: this.driver.url,
-      port: this.driver.port,
-      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + level)
-    }, function (response) {
-      console.log(response.statusCode + ' ' + response.statusMessage);
-    }), Math.floor(Math.random() * (400 - 50) + 50));
+    setTimeout(() => {
+      http.get({
+        host: this.driver.url,
+        port: this.driver.port,
+        path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + level)
+      }, function (response) {
+        console.log(response.statusCode + ' ' + response.statusMessage);
+      })
+    }, Math.floor(Math.random() * (400 - 50) + 50));
   }
 }
 
