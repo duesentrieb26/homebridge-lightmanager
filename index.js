@@ -70,7 +70,7 @@ class KaKuAccessory {
       }
 
       if(config.dimmable) {
-        return callback;
+        return callback();
       }
 
       log(`switching ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) ${ value ? 'on' : 'off' }`);
