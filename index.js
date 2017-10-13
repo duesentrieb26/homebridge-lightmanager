@@ -69,7 +69,7 @@ class KaKuAccessory {
         learn = false;
       }
 
-      if(config.dimmable) {
+      if(config.dimmable && value) {
         return callback();
       }
 

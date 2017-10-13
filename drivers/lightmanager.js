@@ -19,7 +19,7 @@ class HttpDriver extends DriverBase {
     let onoff = (state) ? 'ON' : 'OFF';
 
     if (dimmable) {
-      onoff = (state) ? '50%' : '0%';
+      onoff = (state) ? '100%' : '0%';
     }
     let learnable = (learn) ? ' LEARN ' : ' DIP ';
 
