@@ -51,8 +51,16 @@ class KaKuAccessory {
     if (config.dimmable) {
       this.service.getCharacteristic(Characteristic.Brightness).on('set', (level, callback) => {
 
-        // Convert 0-100 (Homekit) to 6.25% steps in KAKU.
-        level = (Math.ceil(((level / 100) * 16)) * 6.25).toString() + '%';
+        // Convert 0-100 (Homekit) to 0-15 steps in KAKU.
+        //level = (Math.ceil(((level / 100) * 16)) * 6.25).toString() + '%';
+        if (level === 0) {
+          level = 'OFF';
+        }
+
+        if (level > 0) {
+          level = Math.round((level / 100) * 15);
+        }
+
 
         // Dim the device.
         log(`dimming ${ config.type.toLowerCase() } '${ config.name }' (code = ${ config.code }, address = ${ config.address }) to level ${ level }`);
