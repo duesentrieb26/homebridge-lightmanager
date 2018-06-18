@@ -19,27 +19,21 @@ class HttpDriver extends DriverBase {
     let onoff = (state) ? 'ON' : 'OFF';
 
     if (dimmable) {
-      onoff = (state) ? '100%' : '0%';
+      onoff = (state) ? '15' : 'OFF';
     }
     let learnable = (learn) ? ' LEARN ' : ' DIP ';
 
-
-
-    setTimeout(() => {
-      console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
-      http.get({
-        host: this.driver.url,
-        port: this.driver.port,
-        path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + learnable + onoff)
-      }, function (response) {
-        console.log(response.statusCode + ' ' + response.statusMessage);
-      })
-    }, Math.floor(Math.random() * (2500 - 500) + 500));
+    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
+    http.get({
+      host: this.driver.url,
+      port: this.driver.port,
+      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + learnable + onoff)
+    }, function (response) {
+      console.log(response.statusCode + ' ' + response.statusMessage);
+    });
   }
 
   dim(device, code, address, level) {
-
-
 
     setTimeout(() => {
       console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
