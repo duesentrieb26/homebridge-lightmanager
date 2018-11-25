@@ -1,9 +1,9 @@
 {
   "name": "homebridge-lightmanager",
-  "version": "1.2.0",
-  "description": "Homebridge plugin for Lightmanager™",
+  "version": "1.3.0",
+  "description": "Homebridge plugin for Lightmanager™ 8.5 and higher",
   "main": "index.js",
-  "repository": "kevinriemens/homebridge-lightmanager",
+  "repository": "duesentrieb26/homebridge-lightmanager",
   "keywords": [
     "homebridge-plugin"
   ],
@@ -11,7 +11,7 @@
     "node": ">=4.0.0",
     "homebridge": ">=0.2.0"
   },
-  "author": "Kevin Riemens <kevin@xclusivemultimedia.com>",
+  "author": "Sascha Westfeld <swestfeld@gmail.com>",
   "license": "MIT",
   "dependencies": {
   }

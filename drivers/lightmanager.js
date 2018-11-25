@@ -13,37 +13,40 @@ class HttpDriver extends DriverBase {
   }
 
   switch(device, code, address, state, learn, dimmable) {
-
     console.log('Switch ... ', device, code, address, state, learn, dimmable);
+    let onOff = (state) ? 'ON' : 'OFF';
 
-    let onoff = (state) ? 'ON' : 'OFF';
+    const postData = `typ,${device},did,${code},aid,${address},acmd,${onOff}`;
+    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/control , data => ' + postData);
 
-    if (dimmable) {
-      onoff = (state) ? '15' : 'OFF';
-    }
-    let learnable = (learn) ? ' LEARN ' : ' DIP ';
-
-    console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + learnable + onoff);
-    http.get({
-      host: this.driver.url,
+    const req = http.request({
+      hostname: this.driver.url,
       port: this.driver.port,
-      path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + learnable + onoff)
-    }, function (response) {
-      console.log(response.statusCode + ' ' + response.statusMessage);
+      path: '/control',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Length': Buffer.byteLength(postData),
+      },
     });
+
+    req.write(postData);
+    req.end();
   }
+
 
   dim(device, code, address, level) {
 
     setTimeout(() => {
-      console.log('do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address + ' LEARN ' + level);
+      console.log(
+        'do http request: ' + this.driver.url + ':' + this.driver.port + '/cmd=' + device + ' ' + code + ' ' + address +
+        ' LEARN ' + level);
       http.get({
         host: this.driver.url,
         port: this.driver.port,
-        path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + level)
-      }, function (response) {
+        path: '/cmd=' + encodeURIComponent(device + ' ' + code + ' ' + address + ' LEARN ' + level),
+      }, function(response) {
         console.log(response.statusCode + ' ' + response.statusMessage);
-      })
+      });
     }, Math.floor(Math.random() * (2500 - 500) + 500));
   }
 }

@@ -1,7 +1,8 @@
 'use strict';
+
 class DriverBase {
   constructor(log, config) {
-    this.log    = log;
+    this.log = log;
     this.config = config;
   }
 
